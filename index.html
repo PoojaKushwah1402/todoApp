@@ -9,24 +9,26 @@
 </div>
 
 <div>
-	<input ID="myInput" class="main"   type="text" name="todoname" placeholder="WHATS NEEDS TO BE DONE?" onkeypress="run(event)">
+	<input id="myInput" class="main"   type="text" name="todoname" placeholder="WHATS NEEDS TO BE DONE?" />
 </div>
 
-<div id="listItem"></div>
+<div id="listItem">
+</div>
 
 <div class="indiv" id="first">
-     <div class="bottomleft" id="second"></div>
+     <div class="bottomleft" id="second"> 0 Items</div>
   	 <div class="bottomright" id="third">
-  	  <a class="btn"  onclick="showAll()">All</a>
-  	  <a class="btn"  onclick="active()" >Active</a> 
-  	  <a class="btn"  onclick="completed()" >completed</a>
+  	  <a class="btn" id="allFilter">All</a>
+  	  <a class="btn" id="activeFilter" >Active</a> 
+  	  <a class="btn" id="completedFilter">completed</a>
   	</div>
   	 <a class="brght" >Clear Complete</a>
 </div>
 
-<script src="in.js">
+<!-- <script src="in.js"> -->
+<script src="model.js" ></script> 
+<script src="handler.js" ></script>
 
-</script>
 
 </body>
 </html>
