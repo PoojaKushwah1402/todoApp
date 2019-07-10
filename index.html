@@ -1,0 +1,32 @@
+<html>
+<head>
+ <title>todos</title>
+ <link rel="stylesheet" type="text/css" href="in.css">
+</head>
+
+<body bgcolor = "gray">
+	<div class="upper"> todos
+</div>
+
+<div>
+	<input ID="myInput" class="main"   type="text" name="todoname" placeholder="WHATS NEEDS TO BE DONE?" onkeypress="run(event)">
+</div>
+
+<div id="listItem"></div>
+
+<div class="indiv" id="first">
+     <div class="bottomleft" id="second"></div>
+  	 <div class="bottomright" id="third">
+  	  <a class="btn"  onclick="showAll()">All</a>
+  	  <a class="btn"  onclick="active()" >Active</a> 
+  	  <a class="btn"  onclick="completed()" >completed</a>
+  	</div>
+  	 <a class="brght" >Clear Complete</a>
+</div>
+
+<script src="in.js">
+
+</script>
+
+</body>
+</html>
