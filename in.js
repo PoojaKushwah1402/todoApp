@@ -11,11 +11,6 @@ function ifchecked(divid)
   return x;
 }
 
-
-
-
-
-
 function comparry()
 {
   var flag=1;
