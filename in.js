@@ -16,17 +16,6 @@ function ifchecked(divid)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 function comparry()
 {
   var flag=1;
