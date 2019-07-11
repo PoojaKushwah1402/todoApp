@@ -2,6 +2,13 @@ window.todos = (function () {
     var todo = [];
     var state = "ALL";
     return {
+
+        removetodo: function(id){
+          todo = todo.filter(function(obj){
+            return !(obj.id === id);
+          });
+        },
+
         applyFilter: function (filterName) {
             state = filterName;
         },
@@ -57,6 +64,7 @@ window.todos = (function () {
             }
 
         },
+
         toggleTodoState: function (id) {
             todo = todo.map(function(todoObj) {
                 if (todoObj.id === id) {

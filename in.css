@@ -115,4 +115,11 @@ font-size: 20px;
                            padding: 20px;
                            color: green;
                            position: fixed;
-               }
+			   }
+
+.small{
+	float:right;
+	height:10px;
+	width:10px;
+	font-weight: bold;
+}
