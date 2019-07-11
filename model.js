@@ -16,7 +16,7 @@ window.todos = (function () {
             return state;
         },
         getFilteredTodos: function () {
-            if (state === "ALL") return todo;
+            if (state === "ALL") return window.todos.getAllTodos();
 
             if (state === "ACTIVE") return window.todos.getAllActive();
 
@@ -30,39 +30,40 @@ window.todos = (function () {
             };
 
             todo.push(singleTodo);
-
-            return singleTodo;
+            window.todos.getFilteredTodos();
+            // return singleTodo;
         },
         getAllTodos: function() {
-            return todo;
+            const event = new Event('todoListUpdated');
+            event.todos = todo;
+            window.dispatchEvent(event);
         },
         getAllActive: function() {
             var filteredTodo = todo.filter(function(todoObj) {
                 return !todoObj.isCompleted;
             });
 
-            return filteredTodo;
+            const event = new Event('todoListUpdated');
+            event.todos = filteredTodo;
+            window.dispatchEvent(event);
         },
         getAllCompleted: function() {
             var filteredTodo = todo.filter(function(todoObj) {
                 return todoObj.isCompleted;
             });
 
-            return filteredTodo;
+            const event = new Event('todoListUpdated');
+            event.todos = filteredTodo;
+            window.dispatchEvent(event);
         },
         clearCompletedTodos: function () {
             todo = todo.filter(function(todoObj) {
                 return !todoObj.isCompleted;
             });
-            if(state === "COMPLETED")
-             {
-                 return [];
-             }
-            else
-            {
-                return todo;
-            }
 
+            const event = new Event('todoListUpdated');
+            event.todos = state === "COMPLETED" ? [] : todo;
+            window.dispatchEvent(event);
         },
 
         toggleTodoState: function (id) {
@@ -72,6 +73,8 @@ window.todos = (function () {
                 }
                 return todoObj;
             });
+
+            window.todos.getFilteredTodos();
         }
     };
 })();

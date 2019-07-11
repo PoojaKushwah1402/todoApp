@@ -13,17 +13,17 @@
         input.checked = todo.isCompleted;
         input.onchange = function() {
             window.todos.toggleTodoState(todo.id);
-            const currtodolist = window.todos.getFilteredTodos();
-                        const parent = document.getElementById('listItem');
-                        parent.innerHTML = '';
-                        for(var i=0; i < currtodolist.length; i++)
-                        {
-                         const div = createSingleTodoStructure(currtodolist[i]);
-                         parent.appendChild(div);
-                         event.currentTarget.value = ''; 
-                         document.getElementById('second').innerHTML= window.todos.getFilteredTodos().length + " Item Left";
+            // window.todos.getFilteredTodos();
+                        // const parent = document.getElementById('listItem');
+                        // parent.innerHTML = '';
+                        // for(var i=0; i < currtodolist.length; i++)
+                        // {
+                        //  const div = createSingleTodoStructure(currtodolist[i]);
+                        //  parent.appendChild(div);
+                        //  event.currentTarget.value = ''; 
+                        //  document.getElementById('second').innerHTML= window.todos.getFilteredTodos().length + " Item Left";
                     
-                        }
+                        // }
         };
         input.className='checkboxround';
         newdiv.appendChild(input);
@@ -36,16 +36,16 @@
     {
         smalldiv.addEventListener("click",function(event){
            window.todos.removetodo(id);
-           const alltodos = window.todos.getFilteredTodos();
-           const parent = document.getElementById('listItem');
-                parent.innerHTML = '';
+             window.todos.getFilteredTodos();
+        //    const parent = document.getElementById('listItem');
+        //         parent.innerHTML = '';
 
-                for(i = 0;i < alltodos.length; i++) {
-                    const div = createSingleTodoStructure(alltodos[i]);
-                    parent.appendChild(div);
+        //         for(i = 0;i < alltodos.length; i++) {
+        //             const div = createSingleTodoStructure(alltodos[i]);
+        //             parent.appendChild(div);
                     
-                }
-                document.getElementById('second').innerHTML= window.todos.getFilteredTodos().length + " Item Left";
+        //         }
+        //         document.getElementById('second').innerHTML= window.todos.getFilteredTodos().length + " Item Left";
 
         });
     }
@@ -59,17 +59,18 @@
                     const name = event.currentTarget.value;
                     
                     if(name !== "") {
-                        const todoObj = window.todos.add(name);
-                        const currtodolist = window.todos.getFilteredTodos();
-                        const parent = document.getElementById('listItem');
-                        parent.innerHTML = '';
+                        window.todos.add(name);
                         event.currentTarget.value = ''; 
-                        for(var i=0; i < currtodolist.length; i++){
-                            const div = createSingleTodoStructure(currtodolist[i]);
-                            parent.appendChild(div);
-                            event.currentTarget.value = ''; 
-                        }   
-                        document.getElementById('second').innerHTML= window.todos.getFilteredTodos().length + " Item Left";
+                        // window.todos.getFilteredTodos();
+                        // const parent = document.getElementById('listItem');
+                        // parent.innerHTML = '';
+                        // event.currentTarget.value = ''; 
+                        // for(var i=0; i < currtodolist.length; i++){
+                        //     const div = createSingleTodoStructure(currtodolist[i]);
+                        //     parent.appendChild(div);
+                        //     event.currentTarget.value = ''; 
+                        // }   
+                        // document.getElementById('second').innerHTML= window.todos.getFilteredTodos().length + " Item Left";
                      }
                 }
             })
@@ -84,15 +85,15 @@
         if (allFilter) {
             allFilter.addEventListener("click", function() {
                 window.todos.applyFilter("ALL");
-                const allTodos = window.todos.getAllTodos();
-                const parent = document.getElementById('listItem');
-                parent.innerHTML = '';
+                window.todos.getAllTodos();
+                // const parent = document.getElementById('listItem');
+                // parent.innerHTML = '';
 
-                for(i = 0;i < allTodos.length; i++) {
-                    const div = createSingleTodoStructure(allTodos[i]);
-                    parent.appendChild(div);
-                }
-                document.getElementById('second').innerHTML= allTodos.length + " Item Left";
+                // for(i = 0;i < allTodos.length; i++) {
+                //     const div = createSingleTodoStructure(allTodos[i]);
+                //     parent.appendChild(div);
+                // }
+                // document.getElementById('second').innerHTML= allTodos.length + " Item Left";
             });
         } else {
             throw new Error("all filter element not found on line no 45 handler.js");
@@ -105,16 +106,16 @@
         if (activeFilter) {
             activeFilter.addEventListener("click", function() {
                 window.todos.applyFilter("ACTIVE");
-                const allTodos = window.todos.getAllActive();
-                const parent = document.getElementById('listItem');
-                parent.innerHTML = '';
+                window.todos.getAllActive();
+                // const parent = document.getElementById('listItem');
+                // parent.innerHTML = '';
 
-                for(i = 0;i < allTodos.length; i++) {
-                    const div = createSingleTodoStructure(allTodos[i]);
-                    parent.appendChild(div);
-                }
+                // for(i = 0;i < allTodos.length; i++) {
+                //     const div = createSingleTodoStructure(allTodos[i]);
+                //     parent.appendChild(div);
+                // }
 
-                document.getElementById('second').innerHTML= allTodos.length + " Item Left";
+                // document.getElementById('second').innerHTML= allTodos.length + " Item Left";
             });
         } else {
             throw new Error("all filter element not found on line no 45 handler.js");
@@ -127,15 +128,15 @@
         if (completedFilter) {
             completedFilter.addEventListener("click", function() {
                 window.todos.applyFilter("COMPLETED");
-                const allTodos = window.todos.getAllCompleted();
-                const parent = document.getElementById('listItem');
-                parent.innerHTML = '';
+                window.todos.getAllCompleted();
+            //     const parent = document.getElementById('listItem');
+            //     parent.innerHTML = '';
 
-                for(i = 0;i < allTodos.length; i++) {
-                    const div = createSingleTodoStructure(allTodos[i]);
-                    parent.appendChild(div);
-                }
-               document.getElementById('second').innerHTML= allTodos.length + " Item Left";
+            //     for(i = 0;i < allTodos.length; i++) {
+            //         const div = createSingleTodoStructure(allTodos[i]);
+            //         parent.appendChild(div);
+            //     }
+            //    document.getElementById('second').innerHTML= allTodos.length + " Item Left";
             });
         } else {
             throw new Error("all filter element not found on line no 45 handler.js");
@@ -149,17 +150,17 @@
         if(clearCompletedtodo)
          {
             clearCompletedtodo.addEventListener("click", function() {
-                  const alltodos = window.todos.clearCompletedTodos();
+                  window.todos.clearCompletedTodos();
                  
-                    const parent = document.getElementById('listItem');
-                    parent.innerHTML = '';
+                    // const parent = document.getElementById('listItem');
+                    // parent.innerHTML = '';
 
-                    for(i = 0;i < alltodos.length; i++) {
-                      const div = createSingleTodoStructure(alltodos[i]);
-                      parent.appendChild(div);
-                      }
-                    document.getElementById('second').innerHTML= alltodos.length + " Item Left";
-                    }  ) 
+                    // for(i = 0;i < alltodos.length; i++) {
+                    //   const div = createSingleTodoStructure(alltodos[i]);
+                    //   parent.appendChild(div);
+                    //   }
+                    // document.getElementById('second').innerHTML= alltodos.length + " Item Left";
+            }) 
                 
          }
 
@@ -170,6 +171,17 @@
     }
 
 
+    window.addEventListener('todoListUpdated', function (event) {
+        const todoList = event.todos;
+        const parent = document.getElementById('listItem');
+        parent.innerHTML = '';
+
+        for(i = 0;i < todoList.length; i++) {
+            const div = createSingleTodoStructure(todoList[i]);
+            parent.appendChild(div);
+        }
+        document.getElementById('second').innerHTML= todoList.length + " Item Left";
+    });
 
     allFilter();
     clearCompletedtodo();
