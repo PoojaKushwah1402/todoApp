@@ -12,6 +12,8 @@ window.todos = (function () {
             if (state === "ALL") return todo;
 
             if (state === "ACTIVE") return window.todos.getAllActive();
+
+            if (state === "COMPLETED") return window.todos.getAllCompleted();
         },
         add: function(name) {
             const singleTodo = {

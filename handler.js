@@ -81,9 +81,32 @@
         }
     }
 
+    
+    const completedFilter = function(){
+        const completedFilter = document.querySelector("#completedFilter");
+        if (completedFilter) {
+            completedFilter.addEventListener("click", function() {
+                window.todos.applyFilter("COMPLETED");
+                const allTodos = window.todos.getAllCompleted();
+                const parent = document.getElementById('listItem');
+                parent.innerHTML = '';
+
+                for(i = 0;i < allTodos.length; i++) {
+                    const div = createSingleTodoStructure(allTodos[i]);
+                    parent.appendChild(div);
+                }
+               document.getElementById('second').innerHTML= allTodos.length + " Item Left";
+            });
+        } else {
+            throw new Error("all filter element not found on line no 45 handler.js");
+        }
+
+    }
+
 
 
     allFilter();
     activeFilter();
+    completedFilter();
     todoInputSetup();
 })()
