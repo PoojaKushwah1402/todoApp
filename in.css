@@ -102,6 +102,10 @@ font-size: 20px;
  	border-radius: 5px;
  }
 
+ .btn.active {
+	border: 1px solid green;
+}
+
 #check{}
 
 

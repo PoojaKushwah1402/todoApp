@@ -13,17 +13,6 @@
         input.checked = todo.isCompleted;
         input.onchange = function() {
             window.todos.toggleTodoState(todo.id);
-            // window.todos.getFilteredTodos();
-                        // const parent = document.getElementById('listItem');
-                        // parent.innerHTML = '';
-                        // for(var i=0; i < currtodolist.length; i++)
-                        // {
-                        //  const div = createSingleTodoStructure(currtodolist[i]);
-                        //  parent.appendChild(div);
-                        //  event.currentTarget.value = ''; 
-                        //  document.getElementById('second').innerHTML= window.todos.getFilteredTodos().length + " Item Left";
-                    
-                        // }
         };
         input.className='checkboxround';
         newdiv.appendChild(input);
@@ -32,21 +21,10 @@
         return newdiv;
     }
 
-    function buttonfunction(smalldiv,id)
-    {
+    function buttonfunction(smalldiv,id) {
         smalldiv.addEventListener("click",function(event){
-           window.todos.removetodo(id);
-             window.todos.getFilteredTodos();
-        //    const parent = document.getElementById('listItem');
-        //         parent.innerHTML = '';
-
-        //         for(i = 0;i < alltodos.length; i++) {
-        //             const div = createSingleTodoStructure(alltodos[i]);
-        //             parent.appendChild(div);
-                    
-        //         }
-        //         document.getElementById('second').innerHTML= window.todos.getFilteredTodos().length + " Item Left";
-
+            window.todos.removetodo(id);
+            window.todos.getFilteredTodos();
         });
     }
 
@@ -61,17 +39,7 @@
                     if(name !== "") {
                         window.todos.add(name);
                         event.currentTarget.value = ''; 
-                        // window.todos.getFilteredTodos();
-                        // const parent = document.getElementById('listItem');
-                        // parent.innerHTML = '';
-                        // event.currentTarget.value = ''; 
-                        // for(var i=0; i < currtodolist.length; i++){
-                        //     const div = createSingleTodoStructure(currtodolist[i]);
-                        //     parent.appendChild(div);
-                        //     event.currentTarget.value = ''; 
-                        // }   
-                        // document.getElementById('second').innerHTML= window.todos.getFilteredTodos().length + " Item Left";
-                     }
+                    }
                 }
             })
         } else {
@@ -79,6 +47,15 @@
         }
     }
 
+    const addActiveClass = function () {
+        const allFilter = document.querySelector("#allFilter");
+        const activeFilter = document.querySelector("#activeFilter");
+        const completedFilter = document.querySelector("#completedFilter");
+
+        allFilter.classList.remove("active");
+        activeFilter.classList.remove("active");
+        completedFilter.classList.remove("active");
+    }
 
     const allFilter = function () {
         const allFilter = document.querySelector("#allFilter");
@@ -86,14 +63,8 @@
             allFilter.addEventListener("click", function() {
                 window.todos.applyFilter("ALL");
                 window.todos.getAllTodos();
-                // const parent = document.getElementById('listItem');
-                // parent.innerHTML = '';
-
-                // for(i = 0;i < allTodos.length; i++) {
-                //     const div = createSingleTodoStructure(allTodos[i]);
-                //     parent.appendChild(div);
-                // }
-                // document.getElementById('second').innerHTML= allTodos.length + " Item Left";
+                addActiveClass();
+                allFilter.classList.add("active");
             });
         } else {
             throw new Error("all filter element not found on line no 45 handler.js");
@@ -107,15 +78,8 @@
             activeFilter.addEventListener("click", function() {
                 window.todos.applyFilter("ACTIVE");
                 window.todos.getAllActive();
-                // const parent = document.getElementById('listItem');
-                // parent.innerHTML = '';
-
-                // for(i = 0;i < allTodos.length; i++) {
-                //     const div = createSingleTodoStructure(allTodos[i]);
-                //     parent.appendChild(div);
-                // }
-
-                // document.getElementById('second').innerHTML= allTodos.length + " Item Left";
+                addActiveClass("active");
+                activeFilter.classList.add("active");
             });
         } else {
             throw new Error("all filter element not found on line no 45 handler.js");
@@ -129,14 +93,8 @@
             completedFilter.addEventListener("click", function() {
                 window.todos.applyFilter("COMPLETED");
                 window.todos.getAllCompleted();
-            //     const parent = document.getElementById('listItem');
-            //     parent.innerHTML = '';
-
-            //     for(i = 0;i < allTodos.length; i++) {
-            //         const div = createSingleTodoStructure(allTodos[i]);
-            //         parent.appendChild(div);
-            //     }
-            //    document.getElementById('second').innerHTML= allTodos.length + " Item Left";
+                addActiveClass("completed");
+                completedFilter.classList.add("active");
             });
         } else {
             throw new Error("all filter element not found on line no 45 handler.js");
@@ -147,27 +105,13 @@
 
     const clearCompletedtodo = function(){
         const clearCompletedtodo = document.querySelector("#clearCompleted");
-        if(clearCompletedtodo)
-         {
+        if(clearCompletedtodo) {
             clearCompletedtodo.addEventListener("click", function() {
                   window.todos.clearCompletedTodos();
-                 
-                    // const parent = document.getElementById('listItem');
-                    // parent.innerHTML = '';
-
-                    // for(i = 0;i < alltodos.length; i++) {
-                    //   const div = createSingleTodoStructure(alltodos[i]);
-                    //   parent.appendChild(div);
-                    //   }
-                    // document.getElementById('second').innerHTML= alltodos.length + " Item Left";
-            }) 
-                
-         }
-
-        else
-         {
+            })       
+        } else {
             throw new Error("all filter element not found on line no 45 handler.js");  
-         }
+        }
     }
 
 
