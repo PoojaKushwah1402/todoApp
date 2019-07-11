@@ -47,6 +47,15 @@ window.todos = (function () {
             todo = todo.filter(function(todoObj) {
                 return !todoObj.isCompleted;
             });
+            if(state === "COMPLETED")
+             {
+                 return [];
+             }
+            else
+            {
+                return todo;
+            }
+
         },
         toggleTodoState: function (id) {
             todo = todo.map(function(todoObj) {

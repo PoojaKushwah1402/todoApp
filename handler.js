@@ -104,8 +104,42 @@
     }
 
 
+    const clearCompletedtodo = function(){
+        const clearCompletedtodo = document.querySelector("#clearCompleted");
+        if(clearCompletedtodo)
+         {
+            clearCompletedtodo.addEventListener("click", function() {
+                  const alltodos = window.todos.clearCompletedTodos();
+                  if(alltodos)
+                   {
+                    const parent = document.getElementById('listItem');
+                    parent.innerHTML = '';
+
+                    for(i = 0;i < alltodos.length; i++) {
+                      const div = createSingleTodoStructure(alltodos[i]);
+                      parent.appendChild(div);
+                      }
+                    document.getElementById('second').innerHTML= alltodos.length + " Item Left";
+                   }
+                 else
+                 {
+                    const parent = document.getElementById('listItem');
+                    parent.innerHTML = '';  
+                    document.getElementById('second').innerHTML= alltodos.length + " Item Left";
+
+                 }
+            });
+         }
+        else
+         {
+            throw new Error("all filter element not found on line no 45 handler.js");  
+         }
+    }
+
+
 
     allFilter();
+    clearCompletedtodo();
     activeFilter();
     completedFilter();
     todoInputSetup();
