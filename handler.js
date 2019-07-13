@@ -126,10 +126,23 @@
         }
         document.getElementById('second').innerHTML= todoList.length + " Item Left";
     });
+    
+   
+
+        
+
+
+
+
 
     allFilter();
     clearCompletedtodo();
     activeFilter();
     completedFilter();
     todoInputSetup();
-})()
+    
+})();
+
+   window.addEventListener("load", function (){
+    window.todos.getSessiondata()
+    });
