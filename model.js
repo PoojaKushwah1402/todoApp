@@ -7,7 +7,7 @@ window.todos = (function () {
           todo = todo.filter(function(obj){
             return !(obj.id === id);
           });
-          sessionStorage.setItem('todoList',JSON.stringify(todo));
+          localStorage.setItem('todoList',JSON.stringify(todo));
         },
 
         applyFilter: function (filterName) {
@@ -24,7 +24,7 @@ window.todos = (function () {
             if (state === "COMPLETED") return window.todos.getAllCompleted();
         },
         getSessiondata: function() {
-            todo = (JSON.parse(sessionStorage.getItem('todoList')) || [] ) ;
+            todo = (JSON.parse(localStorage.getItem('todoList')) || [] ) ;
             window.todos.getAllTodos();
         },
         add: function(name) {
@@ -39,7 +39,7 @@ window.todos = (function () {
             // return singleTodo;
         },
         getAllTodos: function() {
-            sessionStorage.setItem('todoList',JSON.stringify(todo));
+            localStorage.setItem('todoList',JSON.stringify(todo));
             const event = new Event('todoListUpdated');
             event.todos = todo;
 
@@ -68,7 +68,7 @@ window.todos = (function () {
                 return !todoObj.isCompleted;
             });
 
-            sessionStorage.setItem('todoList',JSON.stringify(todo));
+            localStorage.setItem('todoList',JSON.stringify(todo));
             const event = new Event('todoListUpdated');
             event.todos = state === "COMPLETED" ? [] : todo;
             window.dispatchEvent(event);
@@ -81,7 +81,7 @@ window.todos = (function () {
                 }
                 return todoObj;
             });
-            sessionStorage.setItem('todoList',JSON.stringify(todo));
+            localStorage.setItem('todoList',JSON.stringify(todo));
             window.todos.getFilteredTodos();
         }
     };
